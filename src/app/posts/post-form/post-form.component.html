@@ -1,7 +1,7 @@
 <mat-toolbar>
   <h1>{{ 'posts.form.title.' + formType | translate }}</h1>
   <span class="fill-space"></span>
-  <button mat-flat-button [routerLink]="['../', 'list']" color="accent">
+  <button mat-flat-button (click)="backToList()" color="accent">
     <mat-icon>arrow_back</mat-icon>
     {{ 'posts.form.actions.back' | translate }}
   </button>
