@@ -34,7 +34,7 @@
           <mat-icon>edit</mat-icon>
           <span>{{ 'posts.list.table.row.action.edit' | translate }}</span>
         </button>
-        <button mat-menu-item>
+        <button mat-menu-item (click)="deletePost(post.id)">
           <mat-icon>delete</mat-icon>
           <span>{{ 'posts.list.table.row.action.delete' | translate }}</span>
         </button>
