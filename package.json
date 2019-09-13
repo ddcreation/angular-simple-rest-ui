@@ -1,6 +1,6 @@
 {
-  "name": "wefox-posts",
-  "version": "0.0.0",
+  "name": "angular-simple-rest-api-frontend",
+  "version": "0.0.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
