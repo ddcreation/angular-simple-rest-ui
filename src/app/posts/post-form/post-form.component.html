@@ -10,7 +10,7 @@
   <form [formGroup]="postForm" (submit)="submitPostForm()">
     <mat-form-field appearance="outline">
       <mat-label>
-        {{ 'posts.form.fields.name' | translate }}
+        {{ 'posts.form.fields.title' | translate }}
       </mat-label>
       <input matInput required formControlName="title" />
       <mat-error *ngIf="postForm.get('title').invalid">
@@ -59,7 +59,7 @@
       class="button-submit"
       [disabled]="!postForm.valid"
     >
-      {{ 'posts.form.actions.save' | translate }}
+      {{ 'posts.form.actions.submit.' + formType | translate }}
     </button>
   </form>
 </mat-card>

@@ -13,8 +13,9 @@ const routes: Routes = [
         loadChildren: () =>
           import('./posts/post.module').then(mod => mod.PostModule)
       },
+      { path: '404', component: PageNotFoundComponent },
       { path: '', redirectTo: 'posts', pathMatch: 'full' },
-      { path: '**', component: PageNotFoundComponent }
+      { path: '**', redirectTo: '404' }
     ]
   }
 ];

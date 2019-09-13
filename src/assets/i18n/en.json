@@ -1,3 +1,25 @@
 {
-	"app.title": "Angular simple REST API frontend"
+	"app.title": "Angular simple REST API frontend",
+	"page_not_found.title": "404",
+	"page_not_found.content": "You haven't find a page, but maybe the new employee you was looking for...",
+  "posts.form.title.new": "Create a city",
+	"posts.form.title.edit": "Update city",
+  "posts.form.actions.back": "Back to list",
+	"posts.form.actions.submit.new": "Create",
+	"posts.form.actions.submit.edit": "Update",
+	"posts.form.errors.pattern.coordinates": "Wrong coordinates",
+	"posts.form.errors.pattern.url": "Invalid URL",
+	"posts.form.errors.required": "This field is required",
+	"posts.form.fields.content": "Content",
+	"posts.form.fields.image_url": "Image URL",
+	"posts.form.fields.lat": "Latitude",
+	"posts.form.fields.long": "Longitude",
+	"posts.form.fields.title": "Title",
+	"posts.list.actions.add": "Add",
+	"posts.list.table.header.actions": "Actions",
+	"posts.list.table.header.content": "Content",
+	"posts.list.table.header.title": "Title",
+	"posts.list.table.row.action.delete": "Delete",
+	"posts.list.table.row.action.edit": "Edit",
+	"posts.list.title": "List of cities"
 }
