@@ -1,0 +1,45 @@
+<mat-toolbar>
+  <h1>{{ 'posts.list.title' | translate }}</h1>
+  <button mat-button>
+    add
+  </button>
+</mat-toolbar>
+<table mat-table [dataSource]="postsSource" matSort>
+  <ng-container matColumnDef="title">
+    <th mat-header-cell *matHeaderCellDef>
+      {{ 'posts.list.table.header.title' | translate }}
+    </th>
+    <td mat-cell *matCellDef="let post">{{ post.title }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="content">
+    <th mat-header-cell *matHeaderCellDef class="column-content">
+      {{ 'posts.list.table.header.content' | translate }}
+    </th>
+    <td mat-cell *matCellDef="let post">{{ post.content }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef class="column-action">
+      {{ 'posts.list.table.header.actions' | translate }}
+    </th>
+    <td mat-cell *matCellDef="let post">
+      <button mat-icon-button [matMenuTriggerFor]="postMenu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #postMenu="matMenu">
+        <button mat-menu-item [routerLink]="['/posts', post.id]">
+          <mat-icon>edit</mat-icon>
+          <span>{{ 'posts.list.table.row.action.edit' | translate }}</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>delete</mat-icon>
+          <span>{{ 'posts.list.table.row.action.delete' | translate }}</span>
+        </button>
+      </mat-menu>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
