@@ -1,1 +1,65 @@
-<p>post-form works!</p>
+<mat-toolbar>
+  <h1>{{ 'posts.form.title.' + formType | translate }}</h1>
+  <span class="fill-space"></span>
+  <button mat-flat-button [routerLink]="['../', 'list']" color="accent">
+    <mat-icon>arrow_back</mat-icon>
+    {{ 'posts.form.actions.back' | translate }}
+  </button>
+</mat-toolbar>
+<mat-card *ngIf="postForm" class="post-form">
+  <form [formGroup]="postForm" (submit)="submitPostForm()">
+    <mat-form-field appearance="outline">
+      <mat-label>
+        {{ 'posts.form.fields.name' | translate }}
+      </mat-label>
+      <input matInput required formControlName="title" />
+      <mat-error *ngIf="postForm.get('title').invalid">
+        {{ 'posts.form.errors.required' | translate }}
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" hideRequiredMarker>
+      <mat-label>
+        {{ 'posts.form.fields.content' | translate }}
+      </mat-label>
+      <textarea matInput formControlName="content"></textarea>
+    </mat-form-field>
+    <mat-form-field appearance="outline" hideRequiredMarker>
+      <mat-label>
+        {{ 'posts.form.fields.lat' | translate }}
+      </mat-label>
+      <input matInput required formControlName="lat" />
+      <mat-error *ngIf="postForm.get('lat').invalid">
+        {{ 'posts.form.errors.pattern.coordinates' | translate }}
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" hideRequiredMarker>
+      <mat-label>
+        {{ 'posts.form.fields.long' | translate }}
+      </mat-label>
+      <input matInput required formControlName="long" />
+      <mat-error *ngIf="postForm.get('long').invalid">
+        {{ 'posts.form.errors.pattern.coordinates' | translate }}
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" hideRequiredMarker>
+      <mat-label>
+        {{ 'posts.form.fields.image_url' | translate }}
+      </mat-label>
+      <input matInput required formControlName="image_url" />
+      <mat-error *ngIf="postForm.get('image_url').invalid">
+        {{ 'posts.form.errors.pattern.url' | translate }}
+      </mat-error>
+    </mat-form-field>
+    <div *ngIf="imgPreview">
+      <img [src]="imgPreview" class="image-preview" />
+    </div>
+    <button
+      mat-flat-button
+      color="primary"
+      class="button-submit"
+      [disabled]="!postForm.valid"
+    >
+      {{ 'posts.form.actions.save' | translate }}
+    </button>
+  </form>
+</mat-card>
