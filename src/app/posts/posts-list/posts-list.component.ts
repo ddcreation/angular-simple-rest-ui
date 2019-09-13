@@ -19,8 +19,7 @@ export class PostsListComponent implements OnInit {
     this.postsSource = this._posts.list();
   }
 
-  filterPosts(): void {
-
+  deletePost(id: number): void {
+    this._posts.delete(id);
   }
-
 }

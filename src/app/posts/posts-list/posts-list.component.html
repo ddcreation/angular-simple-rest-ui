@@ -1,7 +1,9 @@
 <mat-toolbar>
   <h1>{{ 'posts.list.title' | translate }}</h1>
-  <button mat-button>
-    add
+  <span class="fill-space"></span>
+  <button mat-flat-button [routerLink]="['../', 'new']" color="primary">
+    <mat-icon>add</mat-icon>
+    {{ 'posts.list.actions.add' | translate}}
   </button>
 </mat-toolbar>
 <table mat-table [dataSource]="postsSource" matSort>

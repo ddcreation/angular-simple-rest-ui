@@ -1,38 +1,39 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Post } from './post.model';
-
-
-const fake1 = {
-  id: 1,
-  title: 'Post 1',
-  content: 'Content of post 1',
-  lat: 3.54444,
-  long: -2.8999,
-  image_url: ''
-};
-
-const fake2 = {
-  id: 2,
-  title: 'Post 2',
-  content: 'Content of post 2',
-  lat: 3.54444,
-  long: -2.8999,
-  image_url: ''
-};
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostService {
 
-  constructor() { }
+  private _url = environment.apiUrl;
+  private _endpoint = 'posts';
 
-  get(id: number): Observable<Post> {
-    return of(fake1);
+  constructor(protected httpClient: HttpClient) {}
+
+  public create(post: Post): Observable<Post> {
+    return this.httpClient.post<Post>(`${this._url}/${this._endpoint}`, post);
+  }
+
+  public update(post: Post): Observable<Post> {
+    return this.httpClient.put<Post>(
+      `${this._url}/${this._endpoint}/${post.id}`,
+      post
+    );
+  }
+
+  read(id: number): Observable<Post> {
+    return this.httpClient.get<Post>(`${this._url}/${this._endpoint}/${id}`);
   }
 
   list(): Observable<Post[]> {
-    return of([fake1, fake2]);
+    return this.httpClient.get<Post[]>(`${this._url}/${this._endpoint}`);
+  }
+
+  delete(id: number) {
+    return this.httpClient.delete(`${this._url}/${this._endpoint}/${id}`);
   }
 }
