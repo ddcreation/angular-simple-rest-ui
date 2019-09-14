@@ -1,6 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PostFormComponent } from './post-form.component';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { HttpLoaderFactory } from 'src/app/app.module';
+import { HttpClient } from '@angular/common/http';
+import {
+  MatIconModule,
+  MatToolbarModule,
+  MatFormFieldModule,
+  MatCardModule,
+  MatInputModule
+} from '@angular/material';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('PostFormComponent', () => {
   let component: PostFormComponent;
@@ -8,9 +22,27 @@ describe('PostFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PostFormComponent ]
-    })
-    .compileComponents();
+      imports: [
+        BrowserAnimationsModule,
+        RouterTestingModule,
+        HttpClientTestingModule,
+        TranslateModule.forRoot({
+          loader: {
+            provide: TranslateLoader,
+            useFactory: HttpLoaderFactory,
+            deps: [HttpClient]
+          }
+        }),
+        FormsModule,
+        ReactiveFormsModule,
+        MatIconModule,
+        MatToolbarModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatCardModule
+      ],
+      declarations: [PostFormComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
