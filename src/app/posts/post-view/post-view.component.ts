@@ -19,7 +19,7 @@ export class PostViewComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    const postId = this._route.snapshot.params.get('id');
+    const postId = this._route.snapshot.params.id;
 
     this._loadPostSubscr = this._postService
       .read(postId)

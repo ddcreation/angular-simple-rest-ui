@@ -14,10 +14,10 @@ export class PostService {
   private _url = environment.apiUrl;
   private _endpoint = 'posts';
 
-  constructor(protected httpClient: HttpClient, private readonly _snackbar: SnackbarService) {}
+  constructor(private readonly _http: HttpClient, private readonly _snackbar: SnackbarService) {}
 
   public create(post: Post): Observable<Post> {
-    return this.httpClient.post<Post>(`${this._url}/${this._endpoint}`, post).pipe(
+    return this._http.post<Post>(`${this._url}/${this._endpoint}`, post).pipe(
       tap(
         () => this._snackbar.success('post.api.create.success'),
         err => {
@@ -29,7 +29,7 @@ export class PostService {
   }
 
   public update(post: Post): Observable<Post> {
-    return this.httpClient.put<Post>(
+    return this._http.put<Post>(
       `${this._url}/${this._endpoint}/${post.id}`,
       post
     ).pipe(
@@ -44,15 +44,15 @@ export class PostService {
   }
 
   read(id: number): Observable<Post> {
-    return this.httpClient.get<Post>(`${this._url}/${this._endpoint}/${id}`);
+    return this._http.get<Post>(`${this._url}/${this._endpoint}/${id}`);
   }
 
   list(): Observable<Post[]> {
-    return this.httpClient.get<Post[]>(`${this._url}/${this._endpoint}`);
+    return this._http.get<Post[]>(`${this._url}/${this._endpoint}`);
   }
 
   delete(id: number) {
-    return this.httpClient.delete(`${this._url}/${this._endpoint}/${id}`).pipe(
+    return this._http.delete(`${this._url}/${this._endpoint}/${id}`).pipe(
       tap(
         () => this._snackbar.success('post.api.delete.success'),
         err => {

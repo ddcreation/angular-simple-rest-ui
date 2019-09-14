@@ -15,6 +15,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from 'src/app/shared/material.module';
 
 describe('PostFormComponent', () => {
   let component: PostFormComponent;
@@ -35,11 +36,7 @@ describe('PostFormComponent', () => {
         }),
         FormsModule,
         ReactiveFormsModule,
-        MatIconModule,
-        MatToolbarModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatCardModule
+        MaterialModule
       ],
       declarations: [PostFormComponent]
     }).compileComponents();

@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MatIconModule, MatToolbarModule, MatTableModule, MatMenuModule } from '@angular/material';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { MaterialModule } from 'src/app/shared/material.module';
 
 describe('PostsListComponent', () => {
   let component: PostsListComponent;
@@ -24,10 +25,7 @@ describe('PostsListComponent', () => {
             deps: [HttpClient]
           }
         }),
-        MatIconModule,
-        MatToolbarModule,
-        MatTableModule,
-        MatMenuModule
+        MaterialModule
       ],
       declarations: [PostsListComponent]
     }).compileComponents();
