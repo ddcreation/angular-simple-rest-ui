@@ -3,19 +3,23 @@
   "version": "0.0.1",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
+    "serve": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "extract-i18n": "ngx-translate-extract --input ./src --output ./src/assets/i18n/*.json --clean --sort --marker _"
+    "extract-i18n": "ngx-translate-extract --input ./src --output ./src/assets/i18n/*.json --clean --sort --marker _",
+    "heroku-postbuild": "ng build --prod"
   },
   "private": true,
   "dependencies": {
     "@angular/animations": "^8.2.6",
     "@angular/cdk": "^8.2.0",
+    "@angular/cli": "~8.3.4",
     "@angular/common": "~8.2.5",
     "@angular/compiler": "~8.2.5",
+    "@angular/compiler-cli": "~8.2.5",
     "@angular/core": "~8.2.5",
     "@angular/forms": "~8.2.5",
     "@angular/material": "^8.2.0",
@@ -24,21 +28,23 @@
     "@angular/router": "~8.2.5",
     "@ngx-translate/core": "^11.0.1",
     "@ngx-translate/http-loader": "^4.0.0",
+    "express": "^4.17.1",
     "hammerjs": "^2.0.8",
+    "path": "^0.12.7",
     "rxjs": "^6.5.3",
     "tslib": "^1.10.0",
+    "typescript": "~3.5.3",
     "zone.js": "~0.9.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.803.4",
-    "@angular/cli": "~8.3.4",
-    "@angular/compiler-cli": "~8.2.5",
     "@angular/language-service": "~8.2.5",
     "@biesbjerg/ngx-translate-extract": "^3.0.5",
     "@types/jasmine": "~3.3.8",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
     "codelyzer": "^5.0.0",
+    "enhanced-resolve": "3.3.0",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~4.1.0",
@@ -48,7 +54,10 @@
     "karma-jasmine-html-reporter": "^1.4.0",
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
-    "tslint": "~5.15.0",
-    "typescript": "~3.5.3"
+    "tslint": "~5.15.0"
+  },
+  "engines": {
+    "node": "12.10.0",
+    "npm": "6.10.3"
   }
 }
