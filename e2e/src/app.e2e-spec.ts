@@ -8,9 +8,9 @@ describe('workspace-project App', () => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
+  it('should redirect to post list', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('angular-simple-rest-api-frontend app is running!');
+    expect(page.getTitleText()).toEqual('List of cities');
   });
 
   afterEach(async () => {
