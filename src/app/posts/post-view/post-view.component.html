@@ -5,6 +5,11 @@
         {{ post.title }}
       </h1>
     </mat-card-title>
+    <span class="fill-space"></span>
+    <button mat-flat-button [routerLink]="['/posts/list']" color="accent">
+      <mat-icon>arrow_back</mat-icon>
+      {{ 'posts.form.actions.back' | translate }}
+    </button>
   </mat-card-header>
   <img mat-card-image [src]="post.image_url" [alt]="post.title" />
   <mat-card-content>
