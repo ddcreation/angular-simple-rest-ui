@@ -1,5 +1,9 @@
 # Angular Simple REST API frontend
 
+## Demo
+
+You can see this app running on `https://angular-simple-rest-frontend.herokuapp.com`
+
 ## Install
 Clone and run `npm install` from inside the folder
 
