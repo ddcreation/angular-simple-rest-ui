@@ -91,6 +91,6 @@ export class PostFormComponent implements OnInit, OnDestroy {
   }
 
   backToList(): void {
-    this._router.navigate(['../', 'list'], {relativeTo: this._route});
+    this._router.navigate(['posts', 'list']);
   }
 }

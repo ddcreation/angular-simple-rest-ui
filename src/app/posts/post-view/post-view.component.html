@@ -1,1 +1,18 @@
-<p>post-view works!</p>
+<mat-card *ngIf="post">
+  <mat-card-header>
+    <mat-card-title>
+      <h1 class="mat-display-1">
+        {{ post.title }}
+      </h1>
+    </mat-card-title>
+  </mat-card-header>
+  <img mat-card-image [src]="post.image_url" [alt]="post.title" />
+  <mat-card-content>
+    <p>{{ post.content }}</p>
+    <p class="coordinates">
+      {{
+        'posts.view.coordinates' | translate: { lat: post.lat, long: post.long }
+      }}
+    </p>
+  </mat-card-content>
+</mat-card>

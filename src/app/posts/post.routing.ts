@@ -5,10 +5,15 @@ import { PostFormComponent } from './post-form/post-form.component';
 import { PostViewComponent } from './post-view/post-view.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'list' },
+  { path: '', redirectTo: 'list', pathMatch: 'full' },
   { path: 'list', component: PostsListComponent },
-  { path: ':id', component: PostFormComponent },
-  { path: ':id/show', component: PostViewComponent }
+  {
+    path: ':id',
+    children: [
+      { path: '', component: PostFormComponent },
+      { path: 'show', component: PostViewComponent }
+    ]
+  }
 ];
 
 @NgModule({
