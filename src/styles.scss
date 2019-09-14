@@ -1,15 +1,28 @@
-/* You can add global styles to this file, and also import other style files */
 @import '~@angular/material/theming';
 
 @include mat-core();
 
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 
-html, body {
+$success: green;
+$error: red;
+
+html,
+body {
   margin: 0 auto;
   height: 100% !important;
 }
 
 .fill-space {
   flex: 1 1 auto;
+}
+
+.snackbar-success {
+  color: white;
+  background-color: $success;
+}
+
+.snackbar-error {
+  color: white;
+  background-color: $error;
 }

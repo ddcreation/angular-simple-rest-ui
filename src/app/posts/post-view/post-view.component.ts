@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { PostService } from '../post.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Post } from '../post.model';
 
@@ -14,13 +14,12 @@ export class PostViewComponent implements OnInit, OnDestroy {
   post: Post;
 
   constructor(
-    private readonly _router: Router,
     private readonly _route: ActivatedRoute,
     private readonly _postService: PostService
   ) {}
 
   ngOnInit() {
-    const postId = this._route.snapshot.params['id'];
+    const postId = this._route.snapshot.params.get('id');
 
     this._loadPostSubscr = this._postService
       .read(postId)

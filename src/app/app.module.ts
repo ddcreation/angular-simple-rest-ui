@@ -11,6 +11,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { LayoutComponent } from './layout/layout.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
+import { SnackbarService } from './shared/snackbar.service';
 
 @NgModule({
   declarations: [AppComponent, LayoutComponent, PageNotFoundComponent],
@@ -28,7 +29,7 @@ import { SharedModule } from './shared/shared.module';
     AppRouting,
     SharedModule
   ],
-  providers: [],
+  providers: [SnackbarService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

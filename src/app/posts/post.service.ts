@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Post } from './post.model';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import { tap } from 'rxjs/operators';
+import { SnackbarService } from '../shared/snackbar.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,16 +14,32 @@ export class PostService {
   private _url = environment.apiUrl;
   private _endpoint = 'posts';
 
-  constructor(protected httpClient: HttpClient) {}
+  constructor(protected httpClient: HttpClient, private readonly _snackbar: SnackbarService) {}
 
   public create(post: Post): Observable<Post> {
-    return this.httpClient.post<Post>(`${this._url}/${this._endpoint}`, post);
+    return this.httpClient.post<Post>(`${this._url}/${this._endpoint}`, post).pipe(
+      tap(
+        () => this._snackbar.success('post.api.create.success'),
+        err => {
+        this._snackbar.error('post.api.create.error');
+        console.error(err);
+        return of(null);
+      })
+    );
   }
 
   public update(post: Post): Observable<Post> {
     return this.httpClient.put<Post>(
       `${this._url}/${this._endpoint}/${post.id}`,
       post
+    ).pipe(
+      tap(
+        () => this._snackbar.success('post.api.update.success'),
+        err => {
+        this._snackbar.error('post.api.update.error');
+        console.error(err);
+        return of(null);
+      })
     );
   }
 
@@ -34,6 +52,14 @@ export class PostService {
   }
 
   delete(id: number) {
-    return this.httpClient.delete(`${this._url}/${this._endpoint}/${id}`);
+    return this.httpClient.delete(`${this._url}/${this._endpoint}/${id}`).pipe(
+      tap(
+        () => this._snackbar.success('post.api.delete.success'),
+        err => {
+        this._snackbar.error('post.api.delete.error');
+        console.error(err);
+        return of(null);
+      })
+    );
   }
 }
