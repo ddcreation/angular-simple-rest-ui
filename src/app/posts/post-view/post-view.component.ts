@@ -19,11 +19,9 @@ export class PostViewComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    const postId = this._route.snapshot.params.id;
-
-    this._loadPostSubscr = this._postService
-      .read(postId)
-      .subscribe(post => (this.post = post));
+    this._loadPostSubscr = this._postService.current.subscribe(
+      post => (this.post = post)
+    );
   }
 
   ngOnDestroy() {

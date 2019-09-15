@@ -14,10 +14,7 @@ export class PostFormComponent implements OnInit, OnDestroy {
   postForm = new FormGroup({
     title: new FormControl('', Validators.required),
     content: new FormControl(''),
-    lat: new FormControl(
-      '',
-      Validators.pattern(AppSettings.coordinatePattern)
-    ),
+    lat: new FormControl('', Validators.pattern(AppSettings.coordinatePattern)),
     long: new FormControl(
       '',
       Validators.pattern(AppSettings.coordinatePattern)
@@ -40,7 +37,7 @@ export class PostFormComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    const postId = this._route.snapshot.params['id'];
+    const postId = this._route.snapshot.params.id;
 
     if (postId === 'new') {
       this.formType = 'new';
@@ -48,13 +45,13 @@ export class PostFormComponent implements OnInit, OnDestroy {
       this.formType = 'edit';
 
       this.postForm.addControl('id', new FormControl(''));
-      this._loadPostSubscr = this._postService
-        .read(postId)
-        .subscribe(post => this.postForm.patchValue(post));
+      this._loadPostSubscr = this._postService.current.subscribe(
+        post => this.postForm.patchValue(post)
+      );
     }
 
     this.formType =
-      this._route.snapshot.params['id'] === 'new' ? 'new' : 'edit';
+      this._route.snapshot.params.id === 'new' ? 'new' : 'edit';
   }
 
   ngOnDestroy() {
@@ -77,11 +74,16 @@ export class PostFormComponent implements OnInit, OnDestroy {
       this._savePostSubscr.unsubscribe();
     }
 
-    const subscr = this.formType === 'new' ? this._postService.create(this.postForm.value) : this._postService.update(this.postForm.value);
-    this._savePostSubscr = subscr.subscribe(post => {
-      this.backToList();
-    },
-    err => console.log(err));
+    const subscr =
+      this.formType === 'new'
+        ? this._postService.create(this.postForm.value)
+        : this._postService.update(this.postForm.value);
+    this._savePostSubscr = subscr.subscribe(
+      () => {
+        this.backToList();
+      },
+      err => console.log(err)
+    );
   }
 
   get imgPreview(): string | null {

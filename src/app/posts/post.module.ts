@@ -6,10 +6,11 @@ import { PostViewComponent } from './post-view/post-view.component';
 import { PostService } from './post.service';
 import { PostRouting } from './post.routing';
 import { SharedModule } from '../shared/shared.module';
+import { ExistingPostGuard } from './guards/existing-post.guard';
 
 @NgModule({
   declarations: [PostsListComponent, PostFormComponent, PostViewComponent],
   imports: [PostRouting, SharedModule],
-  providers: [PostService]
+  providers: [PostService, ExistingPostGuard]
 })
 export class PostModule {}
