@@ -1,4 +1,4 @@
-import { Post } from './post.model';
+import { Post } from '../post.model';
 import { Observable, of } from 'rxjs';
 
 export class PostServiceMock {

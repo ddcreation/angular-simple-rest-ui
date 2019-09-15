@@ -5,9 +5,10 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { HttpLoaderFactory } from 'src/app/app.module';
 import { HttpClient } from '@angular/common/http';
 import { RouterTestingModule } from '@angular/router/testing';
-import { MatIconModule, MatToolbarModule, MatTableModule, MatMenuModule } from '@angular/material';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MaterialModule } from 'src/app/shared/material.module';
+import { PostService } from '../post.service';
+import { PostServiceMock } from '../tests/post.service.mock';
 
 describe('PostsListComponent', () => {
   let component: PostsListComponent;
@@ -27,6 +28,7 @@ describe('PostsListComponent', () => {
         }),
         MaterialModule
       ],
+      providers: [{ provide: PostService, useValue: new PostServiceMock() }],
       declarations: [PostsListComponent]
     }).compileComponents();
   }));

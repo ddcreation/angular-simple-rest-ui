@@ -7,6 +7,8 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { HttpLoaderFactory } from 'src/app/app.module';
 import { HttpClient } from '@angular/common/http';
+import { PostServiceMock } from '../tests/post.service.mock';
+import { PostService } from '../post.service';
 
 describe('PostViewComponent', () => {
   let component: PostViewComponent;
@@ -26,6 +28,7 @@ describe('PostViewComponent', () => {
           }
         })
       ],
+      providers: [{ provide: PostService, useValue: new PostServiceMock() }],
       declarations: [PostViewComponent]
     }).compileComponents();
   }));

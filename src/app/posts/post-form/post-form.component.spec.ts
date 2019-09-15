@@ -4,18 +4,13 @@ import { PostFormComponent } from './post-form.component';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { HttpLoaderFactory } from 'src/app/app.module';
 import { HttpClient } from '@angular/common/http';
-import {
-  MatIconModule,
-  MatToolbarModule,
-  MatFormFieldModule,
-  MatCardModule,
-  MatInputModule
-} from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from 'src/app/shared/material.module';
+import { PostService } from '../post.service';
+import { PostServiceMock } from '../tests/post.service.mock';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('PostFormComponent', () => {
   let component: PostFormComponent;
@@ -38,6 +33,7 @@ describe('PostFormComponent', () => {
         ReactiveFormsModule,
         MaterialModule
       ],
+      providers: [{ provide: PostService, useValue: new PostServiceMock() }],
       declarations: [PostFormComponent]
     }).compileComponents();
   }));
