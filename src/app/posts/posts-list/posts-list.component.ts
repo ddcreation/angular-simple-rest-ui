@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription, BehaviorSubject } from 'rxjs';
 import { Post, PostService } from '../index';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-posts-list',
@@ -15,7 +16,11 @@ export class PostsListComponent implements OnInit, OnDestroy {
   _listPostSubscription: Subscription;
   _deletePostSubscr: Subscription;
 
-  constructor(private readonly _postService: PostService, private readonly _router: Router) {}
+  constructor(
+    private readonly _postService: PostService,
+    private readonly _router: Router,
+    private readonly _translate: TranslateService
+  ) {}
 
   ngOnInit() {
     this.refreshDatas();
@@ -31,9 +36,17 @@ export class PostsListComponent implements OnInit, OnDestroy {
     if (this._deletePostSubscr) {
       this._deletePostSubscr.unsubscribe();
     }
-    this._deletePostSubscr = this._postService.delete(id).subscribe(() => {
-      this.refreshDatas();
-    }, err => console.log(err));
+
+    this._translate.get('post.delete.confirm').subscribe(confirmText => {
+      if (window.confirm(confirmText)) {
+        this._deletePostSubscr = this._postService.delete(id).subscribe(
+          () => {
+            this.refreshDatas();
+          },
+          err => console.log(err)
+        );
+      }
+    });
   }
 
   refreshDatas() {
@@ -42,7 +55,10 @@ export class PostsListComponent implements OnInit, OnDestroy {
     }
     this._listPostSubscription = this._postService
       .list()
-      .subscribe(posts => this.postsSource.next(posts), err => console.log(err));
+      .subscribe(
+        posts => this.postsSource.next(posts),
+        err => console.log(err)
+      );
   }
 
   show(id: number) {

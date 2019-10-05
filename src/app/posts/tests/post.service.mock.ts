@@ -44,7 +44,8 @@ export class PostServiceMock {
   }
 
   delete(id: number) {
-    return of(this.fakeDatas.filter(post => post.id !== id));
+    this.fakeDatas = this.fakeDatas.reduce((acc, post) => post.id !== id ? [...acc, post] : acc, []);
+    return of(this.fakeDatas);
   }
 
   get current(): Observable<Post> {

@@ -29,5 +29,6 @@
 	"posts.list.table.row.action.edit": "Edit",
 	"posts.list.table.row.action.show": "Show",
   "posts.list.title": "List of cities",
+  "post.delete.confirm": "Are you sure?",
 	"posts.view.coordinates": "Latitude: {{ lat }} - Longitude : {{ long }}"
 }
