@@ -45,7 +45,7 @@
       <mat-label>
         {{ 'posts.form.fields.image_url' | translate }}
       </mat-label>
-      <input matInput required formControlName="image_url" />
+      <input matInput formControlName="image_url" />
       <mat-error *ngIf="postForm.get('image_url').invalid">
         {{ 'posts.form.errors.pattern.url' | translate }}
       </mat-error>

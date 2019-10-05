@@ -4,6 +4,7 @@ import { AppSettings } from 'src/app/shared/app-settings';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { PostService } from '../post.service';
+import { ImageUrlValidator } from '../validators/image-url.validator';
 
 @Component({
   selector: 'app-post-form',
@@ -19,10 +20,7 @@ export class PostFormComponent implements OnInit, OnDestroy {
       '',
       Validators.pattern(AppSettings.coordinatePattern)
     ),
-    image_url: new FormControl(
-      '',
-      Validators.pattern(AppSettings.imgUrlPattern)
-    )
+    image_url: new FormControl('', null, ImageUrlValidator)
   });
   formType = 'new';
   saveInProgress = false;
@@ -43,8 +41,8 @@ export class PostFormComponent implements OnInit, OnDestroy {
       this.formType = 'edit';
 
       this.postForm.addControl('id', new FormControl(''));
-      this._loadPostSubscr = this._postService.current.subscribe(
-        post => this.postForm.patchValue(post)
+      this._loadPostSubscr = this._postService.current.subscribe(post =>
+        this.postForm.patchValue(post)
       );
     }
   }
