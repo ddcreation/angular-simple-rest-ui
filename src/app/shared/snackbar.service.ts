@@ -12,7 +12,6 @@ export class SnackbarService {
   ) {}
 
   success(translateKey: string): void {
-    console.log('SUCCESS!!');
     this.open(translateKey, 'success');
   }
 
