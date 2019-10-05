@@ -13,7 +13,7 @@ import { PostService } from '../post.service';
 export class PostFormComponent implements OnInit, OnDestroy {
   postForm = new FormGroup({
     title: new FormControl('', Validators.required),
-    content: new FormControl(''),
+    content: new FormControl('', Validators.required),
     lat: new FormControl('', Validators.pattern(AppSettings.coordinatePattern)),
     long: new FormControl(
       '',
