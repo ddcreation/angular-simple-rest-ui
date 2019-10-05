@@ -3,8 +3,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AppSettings } from 'src/app/shared/app-settings';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { PostService } from '../post.service';
 import { ImageUrlValidator } from '../validators/image-url.validator';
+import { PostService } from '../index';
 
 @Component({
   selector: 'app-post-form',

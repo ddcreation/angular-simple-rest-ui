@@ -1,14 +1,12 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PostsListComponent } from './posts-list.component';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { HttpLoaderFactory } from 'src/app/app.module';
 import { HttpClient } from '@angular/common/http';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MaterialModule } from 'src/app/shared/material.module';
-import { PostService } from '../post.service';
-import { PostServiceMock } from '../tests/post.service.mock';
+import { PostsListComponent, PostService, PostServiceMock } from '../index';
 
 describe('PostsListComponent', () => {
   let component: PostsListComponent;

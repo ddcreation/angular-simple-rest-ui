@@ -1,4 +1,4 @@
-import { Post } from '../post.model';
+import { Post } from '../index';
 import { Observable, of } from 'rxjs';
 
 export class PostServiceMock {
@@ -8,7 +8,7 @@ export class PostServiceMock {
     {
       id: 1,
       title: 'Barcelona',
-      content: `It's just a dream`,
+      content: `It's my dream`,
       lat: 41.3833,
       long: 2.1833,
       image_url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Barcelona_collage.JPG/1200px-Barcelona_collage.JPG'

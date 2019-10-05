@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription, BehaviorSubject } from 'rxjs';
-import { Post } from '../post.model';
-import { PostService } from '../post.service';
+import { Post, PostService } from '../index';
 import { Router } from '@angular/router';
 
 @Component({

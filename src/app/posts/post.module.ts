@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
 
-import { PostsListComponent } from './posts-list/posts-list.component';
-import { PostFormComponent } from './post-form/post-form.component';
-import { PostViewComponent } from './post-view/post-view.component';
-import { PostService } from './post.service';
-import { PostServiceMock } from './tests/post.service.mock';
-import { PostRouting } from './post.routing';
+import {
+  PostsListComponent,
+  PostFormComponent,
+  PostViewComponent,
+  PostService,
+  PostServiceMock,
+  PostRouting,
+  ExistingPostGuard
+} from './index';
 import { SharedModule } from '../shared/shared.module';
-import { ExistingPostGuard } from './guards/existing-post.guard';
 
 @NgModule({
   declarations: [PostsListComponent, PostFormComponent, PostViewComponent],
