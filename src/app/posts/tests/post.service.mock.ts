@@ -24,7 +24,9 @@ export class PostServiceMock {
   ];
 
   create(post: Post): Observable<Post> {
-    return of({ id: this.fakeDatas.length + 1, ...post });
+    const newPost = { id: this.fakeDatas.length + 1, ...post };
+    this.fakeDatas.push(newPost);
+    return of(newPost);
   }
 
   update(post: Post): Observable<Post> {

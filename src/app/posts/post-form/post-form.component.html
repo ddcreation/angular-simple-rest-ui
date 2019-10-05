@@ -21,13 +21,13 @@
       <mat-label>
         {{ 'posts.form.fields.content' | translate }}
       </mat-label>
-      <textarea matInput formControlName="content"></textarea>
+      <textarea matInput required formControlName="content"></textarea>
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>
         {{ 'posts.form.fields.lat' | translate }}
       </mat-label>
-      <input matInput required formControlName="lat" />
+      <input matInput formControlName="lat" />
       <mat-error *ngIf="postForm.get('lat').invalid">
         {{ 'posts.form.errors.pattern.coordinates' | translate }}
       </mat-error>
@@ -36,7 +36,7 @@
       <mat-label>
         {{ 'posts.form.fields.long' | translate }}
       </mat-label>
-      <input matInput required formControlName="long" />
+      <input matInput formControlName="long" />
       <mat-error *ngIf="postForm.get('long').invalid">
         {{ 'posts.form.errors.pattern.coordinates' | translate }}
       </mat-error>
