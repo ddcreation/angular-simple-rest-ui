@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription, BehaviorSubject } from 'rxjs';
 import { Post } from '../post.model';
 import { PostService } from '../post.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-posts-list',
@@ -15,7 +16,7 @@ export class PostsListComponent implements OnInit, OnDestroy {
   _listPostSubscription: Subscription;
   _deletePostSubscr: Subscription;
 
-  constructor(private readonly _postService: PostService) {}
+  constructor(private readonly _postService: PostService, private readonly _router: Router) {}
 
   ngOnInit() {
     this.refreshDatas();
@@ -43,5 +44,9 @@ export class PostsListComponent implements OnInit, OnDestroy {
     this._listPostSubscription = this._postService
       .list()
       .subscribe(posts => this.postsSource.next(posts), err => console.log(err));
+  }
+
+  show(id: number) {
+    this._router.navigate(['/posts/' + id]);
   }
 }

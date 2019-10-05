@@ -11,14 +11,14 @@
     <th mat-header-cell *matHeaderCellDef>
       {{ 'posts.list.table.header.title' | translate }}
     </th>
-    <td mat-cell *matCellDef="let post">{{ post.title }}</td>
+    <td mat-cell *matCellDef="let post" (click)="show(post.id)" class="cursor-pointer">{{ post.title }}</td>
   </ng-container>
 
   <ng-container matColumnDef="content">
     <th mat-header-cell *matHeaderCellDef class="column-content">
       {{ 'posts.list.table.header.content' | translate }}
     </th>
-    <td mat-cell *matCellDef="let post">{{ post.content }}</td>
+    <td mat-cell *matCellDef="let post" (click)="show(post.id)" class="cursor-pointer">{{ post.content }}</td>
   </ng-container>
 
   <ng-container matColumnDef="actions">
@@ -38,7 +38,7 @@
           <mat-icon>delete</mat-icon>
           <span>{{ 'posts.list.table.row.action.delete' | translate }}</span>
         </button>
-        <button mat-menu-item [routerLink]="['/posts/' + post.id]">
+        <button mat-menu-item (click)="show(post.id)">
           <mat-icon>image_search</mat-icon>
           <span>{{ 'posts.list.table.row.action.show' | translate }}</span>
         </button>
