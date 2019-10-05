@@ -11,7 +11,7 @@ export class PostServiceMock {
       content: `It's just a dream`,
       lat: 41.3833,
       long: 2.1833,
-      image_url: 'https://commons.wikimedia.org/wiki/File:Barcelona_collage.JPG?uselang=fr'
+      image_url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Barcelona_collage.JPG/1200px-Barcelona_collage.JPG'
     },
     {
       id: 2,
@@ -19,7 +19,7 @@ export class PostServiceMock {
       content: `Capital of my native country`,
       lat: 48.8534,
       long: 2.3488,
-      image_url: 'https://commons.wikimedia.org/wiki/File:Paris_-_Eiffelturm_und_Marsfeld2.jpg?uselang=fr'
+      image_url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Paris_-_Eiffelturm_und_Marsfeld2.jpg/1164px-Paris_-_Eiffelturm_und_Marsfeld2.jpg'
     }
   ];
 
