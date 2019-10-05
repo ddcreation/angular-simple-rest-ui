@@ -16,18 +16,12 @@ export class ExistingPostGuard implements CanActivate {
   constructor(
     private readonly _router: Router,
     private readonly _postService: PostService
-  ) {
-  }
+  ) {}
 
-  canActivate(
-    next: ActivatedRouteSnapshot
-  ): Observable<boolean> | boolean {
-    return (
-      next.params.id === 'new' ||
-      this._postService.read(next.params.id).pipe(
-        catchError(() => this.errorRedirect()),
-        mergeMap(post => (post ? of(true) : this.errorRedirect()))
-      )
+  canActivate(next: ActivatedRouteSnapshot): Observable<boolean> | boolean {
+    return this._postService.read(parseInt(next.params.id, 10)).pipe(
+      catchError(() => this.errorRedirect()),
+      mergeMap(post => (post ? of(true) : this.errorRedirect()))
     );
   }
 

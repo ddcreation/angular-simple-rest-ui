@@ -24,7 +24,7 @@ export class PostFormComponent implements OnInit, OnDestroy {
       Validators.pattern(AppSettings.imgUrlPattern)
     )
   });
-  formType: string;
+  formType = 'new';
   saveInProgress = false;
 
   private _loadPostSubscr: Subscription;
@@ -39,9 +39,7 @@ export class PostFormComponent implements OnInit, OnDestroy {
   ngOnInit() {
     const postId = this._route.snapshot.params.id;
 
-    if (postId === 'new') {
-      this.formType = 'new';
-    } else {
+    if (postId) {
       this.formType = 'edit';
 
       this.postForm.addControl('id', new FormControl(''));
@@ -49,9 +47,6 @@ export class PostFormComponent implements OnInit, OnDestroy {
         post => this.postForm.patchValue(post)
       );
     }
-
-    this.formType =
-      this._route.snapshot.params.id === 'new' ? 'new' : 'edit';
   }
 
   ngOnDestroy() {

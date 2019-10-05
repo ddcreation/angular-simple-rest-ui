@@ -8,12 +8,13 @@ import { ExistingPostGuard } from './guards/existing-post.guard';
 const routes: Routes = [
   { path: '', redirectTo: 'list', pathMatch: 'full' },
   { path: 'list', component: PostsListComponent },
+  { path: 'new', component: PostFormComponent },
   {
     path: ':id',
     canActivate: [ExistingPostGuard],
     children: [
-      { path: '', component: PostFormComponent },
-      { path: 'show', component: PostViewComponent }
+      { path: 'edit', component: PostFormComponent },
+      { path: '', component: PostViewComponent }
     ]
   }
 ];
