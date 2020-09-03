@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {
-  PostsListComponent,
-  PostFormComponent,
-  PostViewComponent,
-  ExistingPostGuard
-} from './index';
+import { PostsListComponent } from './posts-list/posts-list.component';
+import { PostFormComponent } from './post-form/post-form.component';
+import { ExistingPostGuard } from './guards/existing-post.guard';
+import { PostViewComponent } from './post-view/post-view.component';
+
 
 const routes: Routes = [
   { path: '', redirectTo: 'list', pathMatch: 'full' },
